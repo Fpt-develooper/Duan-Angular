@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>{{title}}</h1>
+    <hr>
+    {{status?"On":"Off"}}
+    <button (click)="toggle()">Toggle</button>
+    <hr>
+    <input type="text" (input)="setValue($event)" />
+    {{valueInput}}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="products && products.length">
+            <tr *ngFor="let product of products;index as i">
+                <th scope="row">{{i +1}}</th>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td><img style="width:200px" src={{product.image}} alt=""></td>
+                <td><button class="btn btn-danger" (click)="removeItem(product._id)">Xóa</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
